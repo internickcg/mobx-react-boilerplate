@@ -1,3 +1,4 @@
+import { autorun } from "mobx";
 import React from "react";
 import { render } from "react-dom";
 import DevTools from "mobx-react-devtools";
@@ -10,19 +11,25 @@ const store = new TodoListModel();
 
 render(
   <div>
-    <DevTools />
+    <DevTools />  {/* blah */}
     <TodoList store={store} />
   </div>,
   document.getElementById("root")
 );
 
 store.addTodo("Get Coffee");
-store.addTodo("Write simpler code");
-store.todos[0].finished = true;
+store.addTodo("Get more coffee");
+
+let i = 0
+let disposer = autorun( () => console.log("Task Completed: " + store.todos[i].title + " : " + store.todos[i].finished) )
+
+//store.popTodo(0);
+
+//store.todos[0].finished = true;
 
 setTimeout(() => {
   store.addTodo("Get a cookie as well");
-}, 2000);
+}, 500);
 
 // playing around in the console
 window.store = store;

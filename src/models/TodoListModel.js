@@ -13,5 +13,10 @@ export default class TodoListModel {
   @action
   addTodo(title) {
     this.todos.push(new TodoModel(title));
-  }
+   }
+
+   popTodo(index) {
+   	this.todos.splice(index,1);
+   }
+
 }

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { observable, action } from "mobx";
 import { observer } from "mobx-react";
+import TodoModel from "../models/TodoModel";
 
-import Todo from "./Todo";
+//import Todo from "./Todo";
 
 @observer
 class TodoList extends React.Component {
@@ -23,7 +24,7 @@ class TodoList extends React.Component {
         <hr />
         <ul>
           {this.props.store.todos.map(todo => (
-            <Todo todo={todo} key={todo.id} />
+            <TodoModel todo={todo} key={todo.id}/>
           ))}
         </ul>
         Tasks left: {this.props.store.unfinishedTodoCount}

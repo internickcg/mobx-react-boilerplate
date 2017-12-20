@@ -7,6 +7,7 @@ const Todo = observer(({ todo }) => (
       type="checkbox"
       checked={todo.finished}
       onClick={() => (todo.finished = !todo.finished)}
+      //onClick={() => todo.props.projState.popTodo()}
     />
     {todo.title}
   </li>
